@@ -1,0 +1,38 @@
+{
+    "AgentCode": {
+        "objective": "Blah",
+        "thought": "{0}\nThink about the objective and any previous action results to decide on a logical next step.",
+        "observation": "{0}\n Analyze the above information. If it contains the answer, provide it and include XXTERMINATEXX in your response. Otherwise, suggest next steps that will lead you to the answer and do not include XXTERMINATEXX in your response.",
+        "control_flow": {
+            "BEGIN": "thought",
+            "thought": "ACTION",
+            "ACTION": "observation",
+            "observation": "thought"
+        }
+    },
+    "LLM": {
+        "prompt_model": "OpenAI/gpt-4",
+        "action_model": "OpenAI/gpt-4-0613",
+        "max_token_length": 2048,
+        "max_action_attempts": 3,
+        "api_key": "<API_Key>",
+        "functions": [{
+            "search":{
+                "name": "search",
+                "description": "Search Wikipedia for a given entity and return the page",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "entity": {
+                            "type": "string",
+                            "description": "The entity whose Wikipedia page you want to search for"
+                        }
+                    },
+                    "required": [
+                        "entity"
+                    ]
+                }
+            }
+        }]
+    }
+}

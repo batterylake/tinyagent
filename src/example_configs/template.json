@@ -1,0 +1,47 @@
+{
+    "AgentCode": {
+        "objective": "<Objective_Description>",
+        "Stage_1": "<Stage_1 Prompt>",
+        "Stage_2": "Stage_2 Prompt",
+        "control_flow": {
+            "BEGIN": "<Initial_Stage>",
+            "Stage_1": "<Next_Stage_After_Stage_1>",
+            "Stage_2": "<Next_Stage_After_Stage_2>"
+        }
+    },
+    "LLM": {
+        "prompt_model": "<Prompt_Model_Name>",
+        "action_model": "<Action_Model_Name>",
+        "max_token_length": "<Max_Token_Length>",
+        "max_action_attempts": "<Max_Action_Attempts>",
+        "api_key": "<API_Key>",
+        "functions": [{
+            "<Function_Type>": {
+                "name": "<Function_Name>",
+                "description": "<Function_Description>",
+                "parameters": {
+                    "type": "<Parameter_Type>",
+                    "properties": {
+                        "<Parameter_Name>": {
+                            "type": "<Parameter_Data_Type>",
+                            "description": "<Parameter_Description>"
+                        }
+                    },
+                    "required": [
+                        "<Required_Parameter_Name>"
+                    ]
+                }
+            }
+        }]
+    },
+    "memory_modules": {
+        "<Memory_Module_Name_1>": {
+            "<Config_Item_1>": "<Config_Item_1_Value>",
+            "<Config_Item_2>": "<Config_Item_2_Value>"
+        },
+        "<Memory_Module_Name_2>": {
+            "<Config_Item_1>": "<Config_Item_1_Value>",
+            "<Config_Item_2>": "<Config_Item_2_Value>"
+        }
+    }
+}

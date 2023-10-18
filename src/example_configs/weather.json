@@ -1,0 +1,44 @@
+{
+    "AgentCode": {
+        "name": "weather_agent",
+        "objective": "Tell me the weather in San Francisco",
+        "thought": "{0}\nThink about the objective and what you need to do to complete it.",
+        "observation": "{0}\nAnalyse the action output. If the objective has been successfully completed, you must include XXTERMINATEXX in your response.",
+        "control_flow": {
+            "BEGIN": "thought",
+            "thought": "ACTION",
+            "ACTION": "observation",
+            "observation": "thought"
+        }
+    },
+    "LLM": {
+        "prompt_model": "OpenAI/gpt-3.5-turbo",
+        "action_model": "OpenAI/gpt-3.5-turbo-0613",
+        "api_key": "<API_Key>",
+        "functions": [{
+            "get_current_weather":{
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA"
+                        },
+                        "unit": {
+                            "type": "string",
+                            "enum": [
+                                "celsius",
+                                "fahrenheit"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "location"
+                    ]
+                }
+            }
+        }]
+    }
+}
